@@ -13,7 +13,6 @@ class ViewController: UIViewController {
     @IBOutlet weak var shakeLabel: UILabel!
     
     var initText = "Shake to find out your future"
-    var runningTimer = false;
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,24 +35,17 @@ class ViewController: UIViewController {
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
         if motion == .MotionShake {
-            if(runningTimer == false) {
-                self.shakeLabel.text = "Stop Shaking Me"
-                self.shakeLabel.textColor = getRandomColor()
-                // starts the timer
-                NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
-                runningTimer = true
-            }
+            self.shakeLabel.text = "Stop Shaking Me"
+            self.shakeLabel.textColor = getRandomColor()
         }
     }
-    
-    func update () {
-        runningTimer = false
-        self.shakeLabel.text = initText
-    }
+
     
     func upSwiped()
     {
         println("Up swiped ")
+        self.shakeLabel.text = initText
+        self.shakeLabel.textColor = UIColor.blackColor()
     }
     
     
