@@ -16,8 +16,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.shakeLabel.text = initText
         // Do any additional setup after loading the view, typically from a nib.
+        self.shakeLabel.text = initText
         //-----------up swipe gestures in view--------------//
         let swipeUp = UISwipeGestureRecognizer(target: self, action: Selector("upSwiped"))
         swipeUp.direction = UISwipeGestureRecognizerDirection.Up
