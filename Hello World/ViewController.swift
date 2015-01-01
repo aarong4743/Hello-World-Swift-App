@@ -12,8 +12,12 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var shakeLabel: UILabel!
     
+    var initText = "Shake to find out your future"
+    var runningTimer = false;
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.shakeLabel.text = initText
         // Do any additional setup after loading the view, typically from a nib.
     }
 
@@ -28,9 +32,19 @@ class ViewController: UIViewController {
     
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
         if motion == .MotionShake {
-            self.shakeLabel.text = "Stop Shaking Me"
-            self.shakeLabel.textColor = getRandomColor()
+            if(runningTimer == false) {
+                self.shakeLabel.text = "Stop Shaking Me"
+                self.shakeLabel.textColor = getRandomColor()
+                // starts the timer
+                NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
+                runningTimer = true
+            }
         }
+    }
+    
+    func update () {
+        runningTimer = false
+        self.shakeLabel.text = initText
     }
     
     func getRandomColor() -> UIColor {
@@ -40,5 +54,5 @@ class ViewController: UIViewController {
         return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
 
-}
 
+}
