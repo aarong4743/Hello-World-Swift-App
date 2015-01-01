@@ -19,8 +19,8 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.shakeLabel.text = initText
         // Do any additional setup after loading the view, typically from a nib.
+        self.shakeLabel.text = initText
         //-----------up swipe gestures in view--------------//
         let swipeUp = UISwipeGestureRecognizer(target: self, action: Selector("upSwiped"))
         swipeUp.direction = UISwipeGestureRecognizerDirection.Up
@@ -44,18 +44,15 @@ class ViewController: UIViewController {
                 // starts the timer
                 NSTimer.scheduledTimerWithTimeInterval(1, target: self, selector: Selector("update"), userInfo: nil, repeats: true)
                 runningTimer = true
+                var rand = Int(arc4random_uniform(20))
+                self.shakeLabel.text = answers[rand]
             }
         }
     }
     
-    func update () {
-        runningTimer = false
-        self.shakeLabel.text = initText
-    }
-    
     func upSwiped()
     {
-        println("Up swiped ")
+        NSLog("Up swiped ")
     }
     
     
