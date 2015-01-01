@@ -21,6 +21,10 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         self.shakeLabel.text = initText
         // Do any additional setup after loading the view, typically from a nib.
+        //-----------up swipe gestures in view--------------//
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: Selector("upSwiped"))
+        swipeUp.direction = UISwipeGestureRecognizerDirection.Up
+        self.view.addGestureRecognizer(swipeUp)
     }
 
     override func didReceiveMemoryWarning() {
@@ -48,6 +52,12 @@ class ViewController: UIViewController {
         runningTimer = false
         self.shakeLabel.text = initText
     }
+    
+    func upSwiped()
+    {
+        println("Up swiped ")
+    }
+    
     
     func getRandomColor() -> UIColor {
         var red:CGFloat = CGFloat(drand48())
