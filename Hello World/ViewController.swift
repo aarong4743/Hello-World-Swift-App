@@ -29,9 +29,15 @@ class ViewController: UIViewController {
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
         if motion == .MotionShake {
             self.shakeLabel.text = "Stop Shaking Me"
-            self.shakeLabel.textColor = UIColor.cyanColor()
-            
+            self.shakeLabel.textColor = getRandomColor()
         }
+    }
+    
+    func getRandomColor() -> UIColor {
+        var red:CGFloat = CGFloat(drand48())
+        var green:CGFloat = CGFloat(drand48())
+        var blue:CGFloat = CGFloat(drand48())
+        return UIColor(red: red, green: green, blue: blue, alpha: 1.0)
     }
 
 }
