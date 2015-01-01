@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     override func motionEnded(motion: UIEventSubtype, withEvent event: UIEvent) {
         if motion == .MotionShake {
             self.shakeLabel.text = "Stop Shaking Me"
+            self.shakeLabel.textColor = UIColor.cyanColor()
             
         }
     }
